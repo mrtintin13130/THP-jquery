@@ -1,0 +1,46 @@
+<h1 class="text-center mb-4">Welcome to my todolist app</h1>
+<%= render 'layouts/task_form'  %>
+<div class="tab">
+  <% @categories.each do  |category|%>
+  <button class="tablinks" id="tab_<%= category.id %>"><%= category.title %></button>
+  <% end %>
+</div>
+<% @categories.each do  |category|%>
+  <div class="tabcontent div<%= category.id %>" id="<%= category.id %>">
+  <% category.tasks.each do |task|  %>
+      <p><%= task.title  %>
+      <% unless task.deadline.nil? %>
+        , to read: <%= task.deadline.strftime('%D') %>
+      <% end %></p>
+  <% end %>
+  </div>
+
+<% end %>
+
+<div class="container">
+  <div class="row">
+    <% @tasks.each do |task| %>
+      <div class="card col-3">
+        <% unless task.image.nil? %>
+          <%= image_tag task.image, class: "rounded-circle" %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script>
+$(document).ready(function(){
+  <% @categories.each do  |category|%>
+    $(".div<%= category.id %>").hide();
+  <%  end %>
+
+    $("button").click(function(){
+      <% @categories.each do  |category|%>
+        $(".div<%= category.id %>").hide();
+      <%  end %>
+      var getID = this.id.split("_");
+      $(".div"+getID[1]).show(500);
+    });
+});
+</script>
