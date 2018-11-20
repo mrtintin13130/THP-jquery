@@ -31,8 +31,9 @@
 <div style="text-align:center">
 <% x = 0 %>
 <% @tasks.each do |task| %>
+  <% x += 1 %>
   <% unless task.image.nil? %>
-    <% x += 1 %>
+    
 
     <span class="dot" onclick='currentSlide(<%= x %>)'></span>
     <% end %>
