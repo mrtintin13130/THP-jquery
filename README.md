@@ -9,7 +9,7 @@ Lien en production: [cliquez-ici](https://jquery-seille.herokuapp.com/)
 Une fois le repo cloné ou téléchargé, exécutez ces commandes :
 
 ```
-$ bundle instal
+$ bundle install
 ```
 ```
 $ rails db:create
